@@ -11,22 +11,49 @@
 #
 # *c) Решить задачу под пунктом b, не создавая новый список. (если будете решать - либо создайте доп. функцию, либо
 # перепишите существующую sum_list_2)
-#
+# #
+# #
 # ВНИМАНИЕ! Используйте стартовый код для своей реализации:
 #
-list_1=[]
-list_2=[]
-for i in range(1, 1001):
-    if i % 2 != 0:
-        list_1.append(i**3)
-sum = 0
-for n in list_1:
-    while n > 0:
-        d = n % 10
-        n = n // 10
-        if d // 7 == 0:
-            sum += d
-print(sum)
+# def sum_list_1(dataset: list) -> int:
+#     """Вычисляет сумму чисел списка dataset, сумма цифр которых делится нацело на 7"""
+#     # место для написания кода
+#     return 1  # Верните значение полученной суммы
+#
+#
+# def sum_list_2(dataset: list) -> int:
+#     """К каждому элементу списка добавляет 17 и вычисляет сумму чисел списка,
+#         сумма цифр которых делится нацело на 7"""
+#     # место для написания кода
+#     return 1  # Верните значение полученной суммы
+#
+#
+# my_list = []  # Соберите нужный список по заданию
+# result_1 = sum_list_1(my_list)
+# print(result_1)
+# result_2 = sum_list_2(my_list)
+# print(result_2)
+
+
+def sum_digits(value):
+    res = 0
+
+    while value != 0:
+        res += value % 10
+        value //= 10
+    return res
+num_list = [i**3 for i in range(1, 1001, 2)]
+
+res1 = sum(filter(lambda num: sum_digits(num) % 7 == 0, num_list))
+res2= sum(filter(lambda num: sum_digits(num + 17) % 7 == 0, num_list))
+
+print(res1)
+print(res2)
+
+
+
+
+
 
 
 
